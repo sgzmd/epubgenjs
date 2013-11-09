@@ -63,7 +63,7 @@ var Constants = {
   CONTENT_OPF_SPINE: '<spine toc="ncx">\n{0}</spine>',
   CONTENT_OPF_SPINE_ITEM: '<itemref idref="{0}" linear="yes"/>\n',
   OEBPS: "OEBPS"
-}
+};
 
 /**
  * Helper object to encapsulate a chapter in a book
@@ -118,12 +118,12 @@ function Epub(chapters) {
  */
 Epub.emptyBook = function() {
   return new Epub(new Chapter("", ""));
-}
+};
 
 Epub.prototype.withStoryName = function(storyName) {
   this.storyName_ = storyName;
   return this;
-}
+};
 
 Epub.prototype.withChapters = function(chapters) {
   if (chapters) {
@@ -137,42 +137,42 @@ Epub.prototype.withChapters = function(chapters) {
   }
 
   return this;
-}
+};
 
 Epub.prototype.withLanguage = function(language) {
   this.language_ = language;
   return this;
-}
+};
 
 Epub.prototype.withAuthor = function(author) {
   this.storyAuthor_ = author;
   return this;
-}
+};
 
 Epub.prototype.withCreatedOn = function(createdOn) {
   this.createdOn_ = createdOn;
   return this;
-}
+};
 
 Epub.prototype.withPublishedOn = function(publishedOn) {
   this.publishedOn_ = publishedOn;
   return this;
-}
+};
 
 Epub.prototype.withModifiedOn = function(modifiedOn) {
   this.modifiedOn_ = modifiedOn;
   return this;
-}
+};
 
 Epub.prototype.withDescription = function(description) {
   this.description_ = description;
   return this;
-}
+};
 
 Epub.prototype.withSource = function(source) {
   this.source_ = source;
   return this;
-}
+};
 
 /**
  * No-op, validates essential Epub fields.
@@ -184,7 +184,7 @@ Epub.prototype.build = function() {
   }
 
   return this;
-}
+};
 
 /**
  * Compiles created ePub object into a epub (zip) blob.
@@ -237,7 +237,7 @@ Epub.prototype.makeContentOpfManifest_ = function() {
         "application/xhtml+xml");
   }
   return Constants.CONTENT_OPF_MANIFEST.format(items);
-}
+};
 
 Epub.prototype.makeContentOpfSpine_ = function() {
   var items = "";
@@ -245,7 +245,7 @@ Epub.prototype.makeContentOpfSpine_ = function() {
     items += Constants.CONTENT_OPF_SPINE_ITEM.format(this.makeChapterId_(i));
   }
   return Constants.CONTENT_OPF_SPINE.format(items);
-}
+};
 
 Epub.prototype.makeChapterId_ = function(sequentialNumber) {
   return "chapter_" + sequentialNumber;
@@ -253,11 +253,11 @@ Epub.prototype.makeChapterId_ = function(sequentialNumber) {
 
 Epub.prototype.makeChapterFileName_ = function(sequentialNumber) {
   return this.makeChapterId_(sequentialNumber) + ".xhtml";
-}
+};
 
 Epub.prototype.makeChapterFilePath_ = function(sequentialNumber) {
   return Constants.OEBPS + "/" + this.makeChapterFileName_(sequentialNumber);
-}
+};
 
 Epub.prototype.makeTocNcx_ = function() {
   var result = Constants.TOC_NCX_FILE_CONTENT_START;
@@ -279,4 +279,4 @@ if (typeof exports != 'undefined') {
   // for Node.js
   exports.Epub = Epub;
   exports.Chapter = Chapter;
-}
+};
