@@ -116,7 +116,7 @@ function Epub(chapters) {
  * Creates an empty {Epub} object.
  * @returns {Epub}
  */
-Epub.emptyStory = function() {
+Epub.emptyBook = function() {
   return new Epub(new Chapter("", ""));
 }
 
@@ -275,7 +275,7 @@ Epub.prototype.makeTocNcx_ = function() {
   return result;
 };
 
-if (typeof  exports != 'undefined') {
+if (typeof exports != 'undefined') {
   // for Node.js
   exports.Epub = Epub;
   exports.Chapter = Chapter;

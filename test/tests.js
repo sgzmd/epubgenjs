@@ -5,7 +5,7 @@ require("./../src/jszip.js");
 
 module.exports = {
     setUp: function (callback) {
-        this.epub_ = epub.Epub.emptyStory()
+        this.epub_ = epub.Epub.emptyBook()
           .withStoryName("storyName")
           .withAuthor("author")
           .withLanguage("en-GB")
@@ -69,7 +69,7 @@ module.exports = {
     },
 
     'Empty ePub will throw an error': function(test) {
-      test.throws(epub.Epub.emptyStory().build());
+      test.throws(epub.Epub.emptyBook().build());
 
       test.done();
     }

@@ -19,7 +19,7 @@
   document.getElementById('btn').addEventListener('click', function () {
     var xhtml = document.documentElement.outerHTML;
     var chapter = new Chapter("My Sample Chapter", xhtml);
-    var epub = Epub.emptyStory().withChapters(chapter).build();
+    var epub = Epub.emptyBook().withChapters(chapter).build();
     var blob = epub.compile({type: 'blob'});
     var uriContent = window.URL.createObjectURL(blob);
 

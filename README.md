@@ -8,7 +8,7 @@ A JavaScript library to produce ePub files from valid XHTML. Example:
     var chapter = new Chapter("My Sample Chapter", xhtml);
 
     // building epub object
-    var epub = Epub.emptyStory()
+    var epub = Epub.emptyBook()
       .withChapters(chapter)
       .withAuthor("Roman Kirillov")
       .withDescription("Test ePub file")
