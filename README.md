@@ -30,3 +30,5 @@ A JavaScript library to produce ePub files from valid XHTML. Example:
     btn.setAttribute('download', 'my-sample-story.epub');
 
     document.body.appendChild(btn);
+
+Use `examples/make_simple_epub.html` to start, and I hope to add better documentation later.
