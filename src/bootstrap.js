@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2013 Roman "sgzmd" Kirillov [me@romankirillov.info]
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // bookmarklet:
 // javascript:var a=document.createElement('script');\
 //    a.setAttribute('src', 'http://localhost:8000/bootstrap.js');\
@@ -20,16 +37,11 @@ var include = function(src, cb) {
   document.head.appendChild(script);
 };
 
-var download = function() {
-  new FFD(window.location.href).download(function(chapterId, chapterText) {
-    console.log(chapterId);
-  }, alert);
-}
-
 include('jszip.js', function() {
+  include('simplehtmlparser.js');
   include('epubgen.js', function() {
     include('ffd.js', function(){
-      download();
+      FFD.createEbook(window.location.href);
     });
   });
 });
