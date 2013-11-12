@@ -106,42 +106,46 @@ FFD.prototype.download_ = function (chapterCb, doneCb) {
 };
 
 FFD.createEbook = function (storyUrl) {
-  var ffd = new FFD(storyUrl);
-  var chapters = [];
-  ffd.download_(
-      function (chapterId, chapterName, chapterText) {
-        chapters[parseInt(chapterId)] = {
-          'text': chapterText,
-          'name': chapterName
-        };
-      }, function (storyName, authorName, description) {
+  if (confirm("Process of downloading a story may take up to few minutes, more on " +
+      "low internet connection. During this time browser may appear frozen. Please " +
+      "confirm if you would like to continue")) {
+    var ffd = new FFD(storyUrl);
+    var chapters = [];
+    ffd.download_(
+        function (chapterId, chapterName, chapterText) {
+          chapters[parseInt(chapterId)] = {
+            'text': chapterText,
+            'name': chapterName
+          };
+        }, function (storyName, authorName, description) {
 
-        var epubChapters = [];
-        for (var chapter in chapters) {
-          epubChapters.push(new Chapter(chapters[chapter].name, chapters[chapter].text));
-        }
+          var epubChapters = [];
+          for (var chapter in chapters) {
+            epubChapters.push(new Chapter(chapters[chapter].name, chapters[chapter].text));
+          }
 
-        var epub = Epub.emptyBook()
-            .withChapters(epubChapters)
-            .withAuthor(authorName)
-            .withStoryName(storyName)
-            .withDescription(description)
-            .withSource(storyUrl)
-            .build();
+          var epub = Epub.emptyBook()
+              .withChapters(epubChapters)
+              .withAuthor(authorName)
+              .withStoryName(storyName)
+              .withDescription(description)
+              .withSource(storyUrl)
+              .build();
 
-        var blob = epub.compile({type: 'blob'});
-        var uriContent = window.URL.createObjectURL(blob);
+          var blob = epub.compile({type: 'blob'});
+          var uriContent = window.URL.createObjectURL(blob);
 
-        var fileName = storyName.replace(/\s/gi, "_");
+          var fileName = storyName.replace(/\s/gi, "_");
 
-        var overlay = document.createElement('div');
-        overlay.setAttribute('style', OVERLAY_STYLE);
-        var btn = document.createElement('a');
-        btn.setAttribute('style', CENTRE_STYLE);
-        btn.setAttribute('download',  fileName + '.epub');
-        btn.setAttribute('href', uriContent);
-        btn.textContent = "Download story";
-        overlay.appendChild(btn);
-        document.body.appendChild(overlay);
-      })
+          var overlay = document.createElement('div');
+          overlay.setAttribute('style', OVERLAY_STYLE);
+          var btn = document.createElement('a');
+          btn.setAttribute('style', CENTRE_STYLE);
+          btn.setAttribute('download', fileName + '.epub');
+          btn.setAttribute('href', uriContent);
+          btn.textContent = "Download story";
+          overlay.appendChild(btn);
+          document.body.appendChild(overlay);
+        })
+  }
 };
