@@ -32,3 +32,19 @@ A JavaScript library to produce ePub files from valid XHTML. Example:
     document.body.appendChild(btn);
 
 Use `examples/make_simple_epub.html` to start, and I hope to add better documentation later.
+
+Another good example is `ffd.js` -- use example bookmarklet in `bootstrap.js` or follow these instructions:
+
+  * Create a bookmarklet with this code (naturally, all in one line):
+
+
+    javascript:var a=document.createElement('script');a.setAttribute('src', \
+      'https://raw.github.com/sigizmund/epubgenjs/master/src/bootstrap.js');\
+      document.head.appendChild(a);
+
+
+  * Navigate to Fanfiction.Net story
+
+  * Click created bookmarklet
+
+You will (hopefully) be able to download full story as a epub file with chapters and TOC.
