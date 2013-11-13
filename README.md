@@ -39,8 +39,8 @@ Another good example is `ffd.js` -- use example bookmarklet in `bootstrap.js` or
 
 
     javascript:var a=document.createElement('script');a.setAttribute('src', \
-      'https://raw.github.com/sigizmund/epubgenjs/master/src/bootstrap.js');\
-      document.head.appendChild(a);
+    'https://raw.github.com/sigizmund/epubgenjs/master/src/bootstrap.js');\
+    document.head.appendChild(a);
 
 
   * Navigate to Fanfiction.Net story
