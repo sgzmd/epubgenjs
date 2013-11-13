@@ -54,7 +54,8 @@ var Constants = {
   CONTENT_OPF_FILE_NAME: "content.opf",
   CONTENT_OPF_FILE_CONTENT:  [
     '<?xml version="1.0" encoding="utf-8"?>',
-    '<package unique-identifier="fanficdownloader-uid" version="2.0" xmlns="http://www.idpf.org/2007/opf">',
+    '<package unique-identifier="fanficdownloader-uid:www.fanfiction.net-u1013852-s6652537" ' +
+        'version="2.0" xmlns="http://www.idpf.org/2007/opf">',
     '{0}',
     '{1}',
     '{2}',
