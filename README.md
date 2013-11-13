@@ -37,11 +37,11 @@ Another good example is `ffd.js` -- use example bookmarklet in `bootstrap.js` or
 
   * Create a bookmarklet with this code (naturally, all in one line):
 
-
+<pre>
     javascript:var a=document.createElement('script');a.setAttribute('src', \
       'https://raw.github.com/sigizmund/epubgenjs/master/src/bootstrap.js');\
       document.head.appendChild(a);
-
+</pre>
 
   * Navigate to Fanfiction.Net story
 
