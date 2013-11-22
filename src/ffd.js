@@ -16,7 +16,7 @@
  */
 
 const FFNRE = /www\.fanfiction\.net\/s\/([0-9]+)\/.+/;
-const FFN_BASE = 'http://www.fanfiction.net/s/';
+const FFN_BASE = 'https://www.fanfiction.net/s/';
 
 const CHAPTER_START =
     ['<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"',
